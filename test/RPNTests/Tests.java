@@ -1,7 +1,6 @@
 //*******************************************************
 //DO NOT MODIFY THIS FILE!!!
 //*******************************************************
-
 package RPNTests;
 
 import java.io.ByteArrayInputStream;
@@ -30,19 +29,19 @@ public class Tests
 	public static class CommonOperators
     {
 		private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+		private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	    
 		/**
 		 * Set the Standard output and error streams to
 		 * send to our private streams instead of the
 		 * console before each test runs
 		 */
-	    @Before
-	    public void setup()
+		@Before
+		public void setup()
 		{
-	    	System.setOut(new PrintStream(outContent));
-	    	System.setErr(new PrintStream(errContent));
-	    }
+			System.setOut(new PrintStream(outContent));
+			System.setErr(new PrintStream(errContent));
+		}
 		
 	    /**
 	     * Reset the Standard output, error, and input
@@ -50,12 +49,12 @@ public class Tests
 	     * System.in) after each test runs
 	     */
 		@After
-	    public void cleanUpStreams()
+		public void cleanUpStreams()
 		{
-	        System.setOut(null);
-	        System.setErr(null);
-	        System.setIn(System.in);
-	    }
+			System.setOut(null);
+			System.setErr(null);
+			System.setIn(System.in);
+			}
 		
 		@Test
 		public void testInputNumbers_ValidPositiveIntegers()
@@ -221,19 +220,19 @@ public class Tests
 	public static class MathOperators
 	{
 		private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+		private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	    
 		/**
 		 * Set the Standard output and error streams to
 		 * send to our private streams instead of the
 		 * console before each test runs
 		 */
-	    @Before
-	    public void setup()
+		@Before
+		public void setup()
 		{
-	    	System.setOut(new PrintStream(outContent));
-	    	System.setErr(new PrintStream(errContent));
-	    }
+			System.setOut(new PrintStream(outContent));
+			System.setErr(new PrintStream(errContent));
+		}
 		
 	    /**
 	     * Reset the Standard output, error, and input
@@ -241,12 +240,12 @@ public class Tests
 	     * System.in) after each test runs
 	     */
 		@After
-	    public void cleanUpStreams()
+		public void cleanUpStreams()
 		{
-	        System.setOut(null);
-	        System.setErr(null);
-	        System.setIn(System.in);
-	    }
+			System.setOut(null);
+			System.setErr(null);
+			System.setIn(System.in);
+			}
 		
 		@Test
 		public void testAdd_TwoPositive()
@@ -414,21 +413,21 @@ public class Tests
 	}
 	
 	public static class OtherOperators
-	{	
+	{
 		private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-	    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+		private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	    
 		/**
 		 * Set the Standard output and error streams to
 		 * send to our private streams instead of the
 		 * console before each test runs
 		 */
-	    @Before
-	    public void setup()
+		@Before
+		public void setup()
 		{
-	    	System.setOut(new PrintStream(outContent));
-	    	System.setErr(new PrintStream(errContent));
-	    }
+			System.setOut(new PrintStream(outContent));
+			System.setErr(new PrintStream(errContent));
+		}
 		
 	    /**
 	     * Reset the Standard output, error, and input
@@ -436,12 +435,12 @@ public class Tests
 	     * System.in) after each test runs
 	     */
 		@After
-	    public void cleanUpStreams()
+		public void cleanUpStreams()
 		{
-	        System.setOut(null);
-	        System.setErr(null);
-	        System.setIn(System.in);
-	    }
+			System.setOut(null);
+			System.setErr(null);
+			System.setIn(System.in);
+		}
 
 		@Test
 		public void testNegate_OneItemPositive()

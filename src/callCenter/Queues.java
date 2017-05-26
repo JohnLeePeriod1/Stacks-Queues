@@ -4,7 +4,7 @@
 
 package callCenter;
 
-public interface Queue
+public interface Queues
 {
 	public void handleTick();
 	public Boolean allCustomersHandled();

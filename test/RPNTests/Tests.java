@@ -27,7 +27,7 @@ import RPNCalculator.Calculator;
 public class Tests 
 {
 	public static class CommonOperators
-    {
+    	{
 		private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	    
@@ -215,7 +215,7 @@ public class Tests
 			Calculator.main(null);
 			validateOutput("\n", outContent);
 		}
-    }
+    	}
 	
 	public static class MathOperators
 	{

@@ -68,7 +68,7 @@ Each command is separated by whitespace. You may not assume that user input is a
       leave the stack unchanged, advance to the next whitespace
       character, and print the following message:
 
-  	    "Bad input"
+	      "Bad input"
 
    2) If a user enters a command that requires more operands than are
       present, leave the stack unchanged, advance to the next

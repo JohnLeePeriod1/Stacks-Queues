@@ -27,7 +27,7 @@ import RPNCalculator.Calculator;
 public class Tests 
 {
 	public static class CommonOperators
-    	{
+    {
 		private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 	    
@@ -70,7 +70,7 @@ public class Tests
 			// Large Integers
 			System.setIn(new ByteArrayInputStream("1234567890\np\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("39\n123456\n1234567890\n", outContent);
+			validateOutput("39\n123456\n1234567890\n", outContent, "Number Input - Valid Positive Integers");
 		}
 		
 		@Test
@@ -87,7 +87,7 @@ public class Tests
 			// Large Integers
 			System.setIn(new ByteArrayInputStream("-1234567890\np\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-22\n-98765\n-1234567890\n", outContent);
+			validateOutput("-22\n-98765\n-1234567890\n", outContent, "Number Input - Valid Negative Integers");
 		}
 		
 		@Test
@@ -117,7 +117,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("3.730920\np\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("0.89\n0.723\n5.028\n29574\n93\n3.73092\n", outContent);
+			validateOutput("0.89\n0.723\n5.028\n29574\n93\n3.73092\n", outContent, "Number Input - Valid Positive Doubles");
 		}
 		
 		@Test
@@ -147,7 +147,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("-13.24620\np\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("-0.28\n-0.028\n-63.988\n-7832\n-56\n-13.2462\n", outContent);
+			validateOutput("-0.28\n-0.028\n-63.988\n-7832\n-56\n-13.2462\n", outContent, "Number Input - Valid Negative Doubles");
 		}
 		
 		@Test
@@ -173,7 +173,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("385.42input\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("Bad input\nBad input\nBad input\nBad input\nBad input\n", outContent);
+			validateOutput("Bad input\nBad input\nBad input\nBad input\nBad input\n", outContent, "Number Input - Invalid Input");
 		}
 	
 		@Test
@@ -181,7 +181,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("10\np\np\np\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("10\n10\n10\n", outContent);
+			validateOutput("10\n10\n10\n", outContent, "Print - Leaves Stack Unchanged");
 		}
 		
 		@Test
@@ -189,7 +189,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("p\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\n", outContent);
+			validateOutput("Not enough operands\n", outContent, "Print - Not Enough Operands");
 		}
 		
 		@Test
@@ -197,7 +197,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("8.25\n.28\n02.63\n278\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("278 2.63 0.28 8.25\n", outContent);
+			validateOutput("278 2.63 0.28 8.25\n", outContent, "Print All");
 		}
 		
 		@Test
@@ -205,7 +205,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("981\n46.2\n7.0\n7.24\na\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("7.24 7 46.2 981\n7.24 7 46.2 981\n", outContent);
+			validateOutput("7.24 7 46.2 981\n7.24 7 46.2 981\n", outContent, "Print All - Leaves Stack Unchanged");
 		}
 		
 		@Test
@@ -213,9 +213,17 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("a\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("\n", outContent);
+			validateOutput("\n", outContent, "Print All - No Operands");
 		}
-    	}
+		
+		@Test
+		public void testQuit()
+		{
+			System.setIn(new ByteArrayInputStream("123\na\nq\n456\na\n".getBytes()));
+			Calculator.main(null);
+			validateOutput("123\n", outContent, "Quit");
+		}
+    }
 	
 	public static class MathOperators
 	{
@@ -252,7 +260,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("78\n6.15\na\n+\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("6.15 78\n84.15\n", outContent);
+			validateOutput("6.15 78\n84.15\n", outContent, "Add - Two Positive");
 		}
 		
 		@Test
@@ -260,7 +268,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-.64\n-5.32\na\n+\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-5.32 -0.64\n-5.96\n", outContent);
+			validateOutput("-5.32 -0.64\n-5.96\n", outContent, "Add - Two Negative");
 		}
 		
 		@Test
@@ -272,7 +280,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("-0.53\n2.46\na\n+\na\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("-82 55\n-27\n2.46 -0.53\n1.93\n", outContent);
+			validateOutput("-82 55\n-27\n2.46 -0.53\n1.93\n", outContent, "Add - Positive And Negative");
 		}
 		
 		@Test
@@ -283,7 +291,7 @@ public class Tests
 			
 			System.setIn(new ByteArrayInputStream("4\n+\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\nNot enough operands\n", outContent);
+			validateOutput("Not enough operands\nNot enough operands\n", outContent, "Add - Not Enough Operands");
 		}
 		
 		@Test
@@ -291,7 +299,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("78\n6.15\na\n-\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("6.15 78\n71.85\n", outContent);
+			validateOutput("6.15 78\n71.85\n", outContent, "Subtract - Two Positive");
 		}
 		
 		@Test
@@ -299,7 +307,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-.64\n-5.3\na\n-\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-5.3 -0.64\n4.66\n", outContent);
+			validateOutput("-5.3 -0.64\n4.66\n", outContent, "Subtract - Two Negative");
 		}
 		
 		@Test
@@ -311,7 +319,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("-0.53\n2.46\na\n-\na\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("-82 55\n137\n2.46 -0.53\n-2.99\n", outContent);
+			validateOutput("-82 55\n137\n2.46 -0.53\n-2.99\n", outContent, "Subtract - Positive And Negative");
 		}
 		
 		@Test
@@ -322,7 +330,7 @@ public class Tests
 			
 			System.setIn(new ByteArrayInputStream(".6\n-\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\nNot enough operands\n", outContent);
+			validateOutput("Not enough operands\nNot enough operands\n", outContent, "Subtract - Not Enough Operands");
 		}
 		
 		@Test
@@ -330,7 +338,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("78\n6\na\n*\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("6 78\n468\n", outContent);
+			validateOutput("6 78\n468\n", outContent, "Multiply - Two Positive");
 		}
 		
 		@Test
@@ -338,7 +346,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-83\n-5\na\n*\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-5 -83\n415\n", outContent);
+			validateOutput("-5 -83\n415\n", outContent, "Multiply - Two Negative");
 		}
 		
 		@Test
@@ -350,7 +358,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("-0.53\n2.46\na\n*\na\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("-82 55\n-4510\n2.46 -0.53\n-1.3038\n", outContent);
+			validateOutput("-82 55\n-4510\n2.46 -0.53\n-1.3038\n", outContent, "Multiply - Positive And Negative");
 		}
 		
 		@Test
@@ -361,7 +369,7 @@ public class Tests
 			
 			System.setIn(new ByteArrayInputStream("4\n*\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\nNot enough operands\n", outContent);
+			validateOutput("Not enough operands\nNot enough operands\n", outContent, "Multiply - Not Enough Operands");
 		}
 
 		@Test
@@ -369,7 +377,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("78\n6\na\n/\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("6 78\n13\n", outContent);
+			validateOutput("6 78\n13\n", outContent, "Divide - Two Positive");
 		}
 		
 		@Test
@@ -377,7 +385,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-3\n-6\na\n/\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-6 -3\n0.5\n", outContent);
+			validateOutput("-6 -3\n0.5\n", outContent, "Divide - Two Negative");
 		}
 		
 		@Test
@@ -389,7 +397,7 @@ public class Tests
 			System.setIn(new ByteArrayInputStream("-0.5\n2.5\na\n/\na\nq\n".getBytes()));
 			Calculator.main(null);
 			
-			validateOutput("-5 55\n-11\n2.5 -0.5\n-0.2\n", outContent);
+			validateOutput("-5 55\n-11\n2.5 -0.5\n-0.2\n", outContent, "Divide - Positive And Negative");
 		}
 		
 		@Test
@@ -400,7 +408,7 @@ public class Tests
 			
 			System.setIn(new ByteArrayInputStream("4\n/\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\nNot enough operands\n", outContent);
+			validateOutput("Not enough operands\nNot enough operands\n", outContent, "Divide - Not Enough Operands");
 		}
 		
 		@Test
@@ -408,7 +416,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("4\n0\n/\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Divide by zero\n", outContent);
+			validateOutput("Divide by zero\n", outContent, "Divide - Divide By Zero");
 		}
 	}
 	
@@ -447,7 +455,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("93.67\na\nn\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("93.67\n-93.67\n", outContent);
+			validateOutput("93.67\n-93.67\n", outContent, "Negate - One Item Positive");
 		}
 
 		@Test
@@ -455,7 +463,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-0.53\na\nn\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-0.53\n0.53\n", outContent);
+			validateOutput("-0.53\n0.53\n", outContent, "Negate - One Item Negative");
 		}
 		
 		@Test
@@ -463,7 +471,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("95\n-073\na\nn\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-73 95\n73 95\n", outContent);
+			validateOutput("-73 95\n73 95\n", outContent, "Negate - More Than One Item");
 		}
 		
 		@Test
@@ -471,7 +479,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("n\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\n", outContent);
+			validateOutput("Not enough operands\n", outContent, "Negate - Not Enough Operands");
 		}
 		
 		@Test
@@ -479,7 +487,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("724\na\nd\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("724\n724 724\n", outContent);
+			validateOutput("724\n724 724\n", outContent, "Duplicate - One Item");
 		}
 		
 		@Test
@@ -487,7 +495,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-.42\n-56.26\na\nd\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("-56.26 -0.42\n-56.26 -56.26 -0.42\n", outContent);
+			validateOutput("-56.26 -0.42\n-56.26 -56.26 -0.42\n", outContent, "Duplicate - More Than One Item");
 		}
 		
 		@Test
@@ -495,7 +503,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("d\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\n", outContent);
+			validateOutput("Not enough operands\n", outContent, "Duplicate - Not Enough Operands");
 		}
 		
 		@Test
@@ -503,7 +511,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("2\n6.250\na\nr\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("6.25 2\n2 6.25\n", outContent);
+			validateOutput("6.25 2\n2 6.25\n", outContent, "Reverse - Two Items");
 		}
 		
 		@Test
@@ -511,7 +519,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("7.3\n901\n8.52\n536.\na\nr\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("536 8.52 901 7.3\n8.52 536 901 7.3\n", outContent);
+			validateOutput("536 8.52 901 7.3\n8.52 536 901 7.3\n", outContent, "Reverse - More Than Two Items");
 		}
 		
 		@Test
@@ -522,7 +530,7 @@ public class Tests
 			
 			System.setIn(new ByteArrayInputStream("2\nr\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("Not enough operands\nNot enough operands\n", outContent);
+			validateOutput("Not enough operands\nNot enough operands\n", outContent, "Reverse - Not Enough Operands");
 		}
 		
 		@Test
@@ -530,7 +538,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("462\na\nc\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("462\n\n", outContent);
+			validateOutput("462\n\n", outContent, "Clear - One Item");
 		}
 		
 		@Test
@@ -538,7 +546,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("-63\n90.30\n-.753\n0.348\na\nc\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("0.348 -0.753 90.3 -63\n\n", outContent);
+			validateOutput("0.348 -0.753 90.3 -63\n\n", outContent, "Clear - Multiple Items");
 		}
 		
 		@Test
@@ -546,7 +554,7 @@ public class Tests
 		{
 			System.setIn(new ByteArrayInputStream("c\na\nq\n".getBytes()));
 			Calculator.main(null);
-			validateOutput("\n", outContent);
+			validateOutput("\n", outContent, "Clear - No Operands");
 		}
 	}
 	
@@ -554,8 +562,8 @@ public class Tests
 	 * Helper method to validate what was sent to the
 	 * Standard output is what was expected
 	 */
-	private static void validateOutput(String expected, ByteArrayOutputStream outContent)
+	private static void validateOutput(String expected, ByteArrayOutputStream outContent, String message)
 	{
-		assertEquals(expected, outContent.toString().replaceAll("\r", ""));
+		assertEquals("Output for '" + message + "' didn't match the expected", expected, outContent.toString().replaceAll("\r", ""));
 	}
 }

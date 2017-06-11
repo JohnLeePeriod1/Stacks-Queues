@@ -44,8 +44,8 @@ public class Tests
 	@After
 	public void cleanUpStreams()
 	{
-		System.setOut(null);
-		System.setErr(null);
+		System.setOut(System.out);
+		System.setErr(System.err);
 		System.setIn(System.in);
 	}
 	

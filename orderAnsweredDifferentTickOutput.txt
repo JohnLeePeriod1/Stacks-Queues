@@ -1,0 +1,25 @@
+Enter input file: Starting tick #0
+Call from Leah a regular member
+Call from Issac a silver member
+Call from Dmitriy a gold member
+Call from Brett a platinum member
+Answering call from Brett
+Starting tick #1
+Call from Ann a regular member
+Call from Ben a silver member
+Call from Carlo a gold member
+Call from Dan a platinum member
+Answering call from Dan
+Starting tick #2
+Answering call from Dmitriy
+Starting tick #3
+Answering call from Carlo
+Starting tick #4
+Answering call from Issac
+Starting tick #5
+Answering call from Ben
+Starting tick #6
+Answering call from Leah
+Starting tick #7
+Answering call from Ann
+Starting tick #8

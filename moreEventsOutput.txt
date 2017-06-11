@@ -1,0 +1,7 @@
+Enter input file: Starting tick #0
+Call from Leah a regular member
+Call from Issac a silver member
+Answering call from Issac
+Starting tick #1
+Answering call from Leah
+Starting tick #2

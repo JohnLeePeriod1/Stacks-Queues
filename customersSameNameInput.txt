@@ -1,0 +1,6 @@
+5
+0 John gold 3
+0 John none 2
+4 John silver 5
+4 John platinum 2
+5 John gold 3

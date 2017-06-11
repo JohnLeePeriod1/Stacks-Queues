@@ -1,0 +1,29 @@
+Enter input file: Starting tick #0
+Starting tick #1
+Starting tick #2
+Starting tick #3
+Starting tick #4
+Starting tick #5
+Call from Mark a gold member
+Answering call from Mark
+Starting tick #6
+Starting tick #7
+Starting tick #8
+Starting tick #9
+Starting tick #10
+Starting tick #11
+Starting tick #12
+Call from David a regular member
+Answering call from David
+Starting tick #13
+Starting tick #14
+Starting tick #15
+Starting tick #16
+Call from Michelle a platinum member
+Answering call from Michelle
+Starting tick #17
+Starting tick #18
+Starting tick #19
+Starting tick #20
+Starting tick #21
+Starting tick #22

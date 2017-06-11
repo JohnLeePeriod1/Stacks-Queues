@@ -174,3 +174,13 @@ And the output produced by running the simulator on it:
     Starting tick #3
     Answering call from Chris
     Starting tick #4
+
+
+## Rubric
+
+| Requirement                                                 | Points                 |
+| ----------------------------------------------------------- | ---------------------- |
+| RPN Calculator Unit Tests                                   | 20 pts (~0.5 pts each) |
+| Call Center Unit Tests                                      | 15 pts (~2 pts each)   |
+| Good Style (Commenting, naming, breaking into methods, etc. | 10 pts                 |
+| **Total**                                                   | **45 pts**             |

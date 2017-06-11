@@ -51,10 +51,10 @@ public class Tests
 		@After
 		public void cleanUpStreams()
 		{
-			System.setOut(null);
-			System.setErr(null);
+			System.setOut(System.out);
+			System.setErr(System.err);
 			System.setIn(System.in);
-			}
+		}
 		
 		@Test
 		public void testInputNumbers_ValidPositiveIntegers()
@@ -250,10 +250,10 @@ public class Tests
 		@After
 		public void cleanUpStreams()
 		{
-			System.setOut(null);
-			System.setErr(null);
+			System.setOut(System.out);
+			System.setErr(System.err);
 			System.setIn(System.in);
-			}
+		}
 		
 		@Test
 		public void testAdd_TwoPositive()
@@ -445,8 +445,8 @@ public class Tests
 		@After
 		public void cleanUpStreams()
 		{
-			System.setOut(null);
-			System.setErr(null);
+			System.setOut(System.out);
+			System.setErr(System.err);
 			System.setIn(System.in);
 		}
 

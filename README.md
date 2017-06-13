@@ -178,6 +178,8 @@ And the output produced by running the simulator on it:
 
 ## Rubric
 
+You are not allowed to use any other methods on either the Stack or Queue class than what we mentioned in class (even if the class implements it). For Stack the only methods you can use are pop, peek, push, isEmpty and size. For Queue the only methods you can use are remove, peek, add, isEmpty, and size. Points will be taken off if you do not follow this and use other methods. 
+
 | Requirement                                                 | Points                 |
 | ----------------------------------------------------------- | ---------------------- |
 | RPN Calculator Unit Tests                                   | 20 pts (~0.5 pts each) |

@@ -186,3 +186,189 @@ You are not allowed to use any other methods on either the Stack or Queue class 
 | Call Center Unit Tests                                      | 15 pts (~2 pts each)   |
 | Good Style (Commenting, naming, breaking into methods, etc. | 10 pts                 |
 | **Total**                                                   | **45 pts**             |
+
+
+## Extra Credit
+
+For extra credit, you will implement a templated container class---the double-ended, doubly-linked list---and use this structure in your two other applications (RPN Calculator, Call Center).
+
+The double-ended list, or Dlist, is a templated container. It supports the following operational methods:
+
+	isEmpty: 		a predicate that returns true if the 
+				list is empty, false otherwise
+
+	insertFront/insertBack: inserts an object at the front/back of 
+				the list, respectively.
+
+	removeFront/removeBack:	removes an object from the front/back 
+				of a non-empty list, respectively;
+				throws an exception if the list is empty.
+
+	peekFront/peekBack:	returns an object from the front/back 
+				of a non-empty list without removing 
+				the object, respectively; throws an 
+				exception if the list is empty.
+
+	size:			returns the number of objects in the list.
+
+The complete DList and Node classes are provided below. You should add these files into a new package in your eclipse project. 
+
+(DList.java)
+````
+package dList;
+
+/**
+ * Contains a double-ended list of Objects
+ */
+public class DList<T>
+{
+	/**
+	 * Pointer to the first node in the list (NULL if none)
+	 */
+	private Node<T> first;
+	
+	/**
+	 * Pointer to the last node in the list (NULL if none)
+	 */
+	private Node<T> last;
+	
+	/**
+	 * Constructor for DList
+	 */
+	public DList()
+	{
+		// TODO: Replace with your code
+	}
+
+	/**
+	 * @return true if the list is empty, false otherwise
+	 */
+	public boolean isEmpty()
+	{
+		// TODO: Replace with your code
+		return false;
+	}
+	
+	/**
+	 * Inserts item at the front of the list
+	 */
+	public void insertFront(T item)
+	{
+		// TODO: Replace with your code
+	}
+	
+	/**
+	 * Inserts item at the back of the list
+	 */
+	public void insertBack(T item)
+	{
+		// TODO: Replace with your code
+	}
+	
+	/**
+	 * @return and remove the first object from a non-empty list.
+	 * Throws an exception if the list is empty.
+	 */
+	public T removeFront()
+	{
+		// TODO: Replace with your code
+		return null;
+	}
+	
+	/**
+	 * @return and remove the last object from a non-empty list.
+	 * Throws an exception if the list is empty.
+	 */
+	public T removeBack()
+	{
+		// TODO: Replace with your code
+		return null;
+	}
+	
+	/**
+	 * @return the first object from a non-empty list.
+	 * Throws an exception if the list is empty.
+	 */
+	public T peekFront()
+	{
+		// TODO: Replace with your code
+		return null;
+	}
+	
+	/**
+	 * @return the last object from a non-empty list.
+	 * Throws an exception if the list is empty.
+	 */
+	public T peekBack()
+	{
+		// TODO: Replace with your code
+		return null;
+	}
+	
+	/**
+	 * @return the size of the list
+	 */
+	public int size()
+	{
+		// TODO: Replace with your code
+		return 0;
+	}
+}
+````
+
+(Node.java)
+````
+//*******************************************************
+//DO NOT MODIFY THIS FILE!!!
+//*******************************************************
+
+package dList;
+
+/**
+ * Contains a single node in the list with links to the
+ * next and previous node in the list.
+ */
+public class Node<T>
+{
+	/**
+	 * A link to the next node in the list.
+	 * NULL if none.
+	 */
+	public Node<T> next;
+	
+	/**
+	 * A link to the previous node in the list.
+	 * NULL if none.
+	 */
+	public Node<T> previous;
+	
+	/**
+	 * The data in this node in the list.
+	 */
+	public T data;
+	
+	/**
+	 * Constructor to create a new node with data
+	 * and no previous/next node links.
+	 */
+	public Node(T data)
+	{
+		this(data, null, null);
+	}
+	
+	/**
+	 * Constructor to create a new node with data
+	 * and links to the previous/next nodes.
+	 */
+	public Node(T data, Node<T> next, Node<T> previous)
+	{
+		this.data = data;
+		this.next = next;
+		this.previous = previous;
+	}
+}
+````
+
+You are to provide your implementation for the DList class in addition to using this data structure in your other two programs (RPN Calculator, and Call Center). All unit tests for the two programs should still pass.
+
+
